@@ -44,3 +44,7 @@ flowchart TD
 
 ### Tech
 Java 17, Maven, Finnhub API, Gson, OOP, Observer pattern, multithreading, retry/backoff
+
+---
+Note this project is still being updated.
+
