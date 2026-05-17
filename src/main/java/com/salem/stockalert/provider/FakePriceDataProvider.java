@@ -1,4 +1,7 @@
-package com.salem.stockalert;
+package com.salem.stockalert.provider;
+
+import com.salem.stockalert.model.PriceQuote;
+import com.salem.stockalert.model.Symbol;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -7,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Fake provider for Milestone 3: generates a simple random-walk price per symbol.
+ * Fake provider for testing: generates a simple random-walk price per symbol.
  */
 public final class FakePriceDataProvider implements PriceDataProvider {
     private final ConcurrentHashMap<Symbol, BigDecimal> lastPrices = new ConcurrentHashMap<>();

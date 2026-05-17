@@ -1,4 +1,8 @@
-package com.salem.stockalert;
+package com.salem.stockalert.provider;
+
+import com.salem.stockalert.model.PriceQuote;
+import com.salem.stockalert.model.Symbol;
+
 import java.time.Duration;
 
 public class RetryingPriceDataProvider implements PriceDataProvider {
@@ -57,4 +61,3 @@ public class RetryingPriceDataProvider implements PriceDataProvider {
         }
     }
 }
-

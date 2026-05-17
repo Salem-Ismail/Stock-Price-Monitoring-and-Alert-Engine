@@ -1,4 +1,6 @@
-package com.salem.stockalert;
+package com.salem.stockalert.subscriber;
+
+import com.salem.stockalert.model.PriceQuote;
 
 public final class LoggingPriceSubscriber implements PriceSubscriber {
     @Override

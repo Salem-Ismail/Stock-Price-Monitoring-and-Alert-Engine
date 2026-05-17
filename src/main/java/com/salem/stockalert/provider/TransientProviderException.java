@@ -1,4 +1,4 @@
-package com.salem.stockalert;
+package com.salem.stockalert.provider;
 
 public class TransientProviderException extends RuntimeException {
     public TransientProviderException(String message, Throwable cause){

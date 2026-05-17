@@ -1,4 +1,4 @@
-package com.salem.stockalert;
+package com.salem.stockalert.model;
 import java.util.Objects;
 
 public final class Symbol{

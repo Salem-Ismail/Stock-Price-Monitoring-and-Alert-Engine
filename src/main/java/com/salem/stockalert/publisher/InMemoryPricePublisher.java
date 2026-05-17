@@ -1,4 +1,8 @@
-package com.salem.stockalert;
+package com.salem.stockalert.publisher;
+
+import com.salem.stockalert.model.PriceQuote;
+import com.salem.stockalert.subscriber.PriceSubscriber;
+
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InMemoryPricePublisher implements PricePublisher {

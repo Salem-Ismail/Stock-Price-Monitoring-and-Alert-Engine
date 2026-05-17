@@ -1,4 +1,10 @@
-package com.salem.stockalert;
+package com.salem.stockalert.subscriber;
+
+import com.salem.stockalert.alert.AlertRule;
+import com.salem.stockalert.alert.AlertSink;
+import com.salem.stockalert.alert.PriceThresholdRule;
+import com.salem.stockalert.model.AlertEvent;
+import com.salem.stockalert.model.PriceQuote;
 
 import java.math.BigDecimal;
 import java.util.List;

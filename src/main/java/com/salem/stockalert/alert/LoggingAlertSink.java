@@ -1,4 +1,6 @@
-package com.salem.stockalert;
+package com.salem.stockalert.alert;
+
+import com.salem.stockalert.model.AlertEvent;
 
 public class LoggingAlertSink implements AlertSink {
     @Override

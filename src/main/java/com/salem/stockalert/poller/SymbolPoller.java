@@ -1,4 +1,10 @@
-package com.salem.stockalert;
+package com.salem.stockalert.poller;
+
+import com.salem.stockalert.model.PriceQuote;
+import com.salem.stockalert.model.Symbol;
+import com.salem.stockalert.provider.PriceDataProvider;
+import com.salem.stockalert.publisher.PricePublisher;
+
 import java.time.Duration;
 import java.util.concurrent.atomic.AtomicBoolean;
 

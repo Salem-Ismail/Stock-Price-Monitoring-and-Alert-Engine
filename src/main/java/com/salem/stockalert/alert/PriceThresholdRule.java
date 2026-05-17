@@ -1,4 +1,8 @@
-package com.salem.stockalert;
+package com.salem.stockalert.alert;
+
+import com.salem.stockalert.model.PriceQuote;
+import com.salem.stockalert.model.Symbol;
+
 import java.math.BigDecimal;
 
 

@@ -1,4 +1,4 @@
-package com.salem.stockalert;
+package com.salem.stockalert.provider;
 
 public class FatalProviderException extends RuntimeException {
     public FatalProviderException(String message, Throwable cause){
