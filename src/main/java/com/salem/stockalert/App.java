@@ -22,16 +22,20 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Milestone 3 runner: starts one SymbolPoller per symbol and shuts down cleanly.
+ * Application entry point: polls symbols, publishes price updates, and evaluates
+ * threshold alert rules. Stops cleanly on Ctrl+C via a shutdown hook.
  */
-
 public final class App {
     public static void main(String[] args) {
         PricePublisher publisher = new InMemoryPricePublisher();
         publisher.subscribe(new LoggingPriceSubscriber());
 
-        //PriceDataProvider provider = new FinnhubPriceDataProvider();
-        PriceDataProvider provider = new RetryingPriceDataProvider(new FinnhubPriceDataProvider(), 5, Duration.ofMillis(250), Duration.ofSeconds(5));
+        PriceDataProvider provider = new RetryingPriceDataProvider(
+            new FinnhubPriceDataProvider(),
+            5,
+            Duration.ofMillis(250),
+            Duration.ofSeconds(5)
+        );
         Duration interval = Duration.ofSeconds(6);
 
         List<SymbolPoller> pollers = List.of(
