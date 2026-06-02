@@ -16,12 +16,48 @@ API keys are read from the environment (`FINNHUB_API_KEY`), not hardcoded. Local
 ### Architecture
 ```mermaid
 flowchart TD
-  PollerAAPL[SymbolPoller AAPL] --> Provider[PriceDataProvider]
-  PollerMSFT[SymbolPoller MSFT] --> Provider
-  Provider --> Publisher[InMemoryPricePublisher]
-  Publisher --> LogSub[LoggingPriceSubscriber]
-  Publisher --> Eval[AlertEvaluatorSubscriber]
-  Eval --> Sink[LoggingAlertSink]
+
+    subgraph PollingLayer[Polling Layer]
+        SP1[SymbolPoller: AAPL]
+        SP2[SymbolPoller: TSLA]
+        SP3[SymbolPoller: MSFT]
+    end
+
+    subgraph ProviderLayer[Price Data Providers]
+
+        Finnhub[FinnhubPriceDataProvider]
+    end
+
+    subgraph PublisherLayer[Publisher]
+        Pub[InMemoryPricePublisher]
+    end
+
+    subgraph Subscribers[Subscribers]
+        LogSub[LoggingPriceSubscriber]
+        AlertSub[AlertEvaluatorSubscriber]
+    end
+
+    subgraph Alerting[Alert Sinks]
+        LogSink[LoggingAlertSink]
+    end
+
+    %% Connections
+    SP1 -->|fetch price| ProviderLayer
+    SP2 -->|fetch price| ProviderLayer
+    SP3 -->|fetch price| ProviderLayer
+
+    ProviderLayer -->|PriceQuote| SP1
+    ProviderLayer -->|PriceQuote| SP2
+    ProviderLayer -->|PriceQuote| SP3
+
+    SP1 -->|publish| Pub
+    SP2 -->|publish| Pub
+    SP3 -->|publish| Pub
+
+    Pub --> LogSub
+    Pub --> AlertSub
+
+    AlertSub -->|emit alert| LogSink
 ```
 > [!NOTE]
 > Each SymbolPoller (one per symbol) fetches prices from the PriceDataProvider, publishes PriceQuote, updates through the InMemoryPricePublisher, and subscribers either log updates (LoggingPriceSubscriber) or evaluate rules (AlertEvaluatorSubscriber) to emit alerts to the LoggingAlertSink.
