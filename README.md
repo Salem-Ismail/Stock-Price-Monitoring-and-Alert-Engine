@@ -5,7 +5,7 @@ A real-time stock price alert system built in Java, focused on clean OOP design,
 ### Features
 - Multithreaded per‑symbol polling workers
 - Observer pattern (PricePublisher → PriceSubscriber)
-- Pluggable data providers (fake + Finnhub)
+- Pluggable data providers (Finnhub, and future alternatives)
 - Retry with exponential backoff for transient failures
 - Threshold alerts (above/below) with crossing detection (no alert spam)
 - Logging sink for alerts/events
