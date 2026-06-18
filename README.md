@@ -1,4 +1,4 @@
-# Secure-Stock-Price-Alert-System
+# Stock-Price-Monitoring-and-Alert-Engine
 
 A real-time stock price alert system built in Java, focused on clean OOP design, the Observer pattern, multithreading, reliability (retry with exponential backoff), and extensibility.
 
